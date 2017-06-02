@@ -12,7 +12,7 @@ namespace AsyncUtilities
     /// </typeparam>
     public class CancellableTaskCompletionSource<TResult> : TaskCompletionSource<TResult>
     {
-        private CancellationTokenRegistration _registration;
+        private readonly CancellationTokenRegistration _registration;
 
         /// <summary>
         /// Gets the <see cref="CancellationToken"/> associated with this <see cref="CancellableTaskCompletionSource{TResult}"/>.
