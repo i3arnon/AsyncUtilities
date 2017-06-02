@@ -5,65 +5,65 @@ namespace AsyncUtilities
 {
     /// <summary>
     /// Represents a <see cref="TaskCompletionSource{TResult}"/> associated with a <see cref="CancellationToken"/>.
-    /// Canceling the <see cref="CancellationToken"/> will cancel the <see cref="CancellableTaskCompletionSource{TResult}"/>.
+    /// Canceling the <see cref="CancellationToken"/> will cancel the <see cref="CancelableTaskCompletionSource{TResult}"/>.
     /// </summary>
     /// <typeparam name="TResult">
-    /// The type of the result value associated with this <see cref="CancellableTaskCompletionSource{TResult}"/>.
+    /// The type of the result value associated with this <see cref="CancelableTaskCompletionSource{TResult}"/>.
     /// </typeparam>
-    public class CancellableTaskCompletionSource<TResult> : TaskCompletionSource<TResult>
+    public class CancelableTaskCompletionSource<TResult> : TaskCompletionSource<TResult>
     {
         private readonly CancellationTokenRegistration _registration;
 
         /// <summary>
-        /// Gets the <see cref="CancellationToken"/> associated with this <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// Gets the <see cref="CancellationToken"/> associated with this <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </summary>
         public CancellationToken CancellationToken { get; }
 
         /// <summary>
-        /// Creates a <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// Creates a <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </summary>
         /// <param name="cancellationToken">
-        /// The <see cref="CancellationToken"/> to associate with the <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// The <see cref="CancellationToken"/> to associate with the <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </param>
-        public CancellableTaskCompletionSource(CancellationToken cancellationToken)
+        public CancelableTaskCompletionSource(CancellationToken cancellationToken)
             : this(cancellationToken, null, TaskCreationOptions.None)
         {
         }
 
         /// <summary>
-        /// Creates a <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// Creates a <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </summary>
         /// <param name="cancellationToken">
-        /// The <see cref="CancellationToken"/> to associate with the <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// The <see cref="CancellationToken"/> to associate with the <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </param>
         /// <param name="creationOptions">
         /// The options to use when creating the underlying <see cref="Task{TResult}"/>.
         /// </param>
-        public CancellableTaskCompletionSource(CancellationToken cancellationToken, TaskCreationOptions creationOptions)
+        public CancelableTaskCompletionSource(CancellationToken cancellationToken, TaskCreationOptions creationOptions)
             : this(cancellationToken, null, creationOptions)
         {
         }
 
 
         /// <summary>
-        /// Creates a <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// Creates a <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </summary>
         /// <param name="cancellationToken">
-        /// The <see cref="CancellationToken"/> to associate with the <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// The <see cref="CancellationToken"/> to associate with the <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </param>
         /// <param name="state">
         /// The state to use as the underlying <see cref="Task{TResult}"/>'s AsyncState.
         /// </param>
-        public CancellableTaskCompletionSource(CancellationToken cancellationToken, object state)
+        public CancelableTaskCompletionSource(CancellationToken cancellationToken, object state)
             : this(cancellationToken, state, TaskCreationOptions.None)
         {
         }
 
         /// <summary>
-        /// Creates a <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// Creates a <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </summary>
         /// <param name="cancellationToken">
-        /// The <see cref="CancellationToken"/> to associate with the <see cref="CancellableTaskCompletionSource{TResult}"/>.
+        /// The <see cref="CancellationToken"/> to associate with the <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </param>
         /// <param name="state">
         /// The state to use as the underlying <see cref="Task{TResult}"/>'s AsyncState.
@@ -71,7 +71,7 @@ namespace AsyncUtilities
         /// <param name="creationOptions">
         /// The options to use when creating the underlying <see cref="Task{TResult}"/>.
         /// </param>
-        public CancellableTaskCompletionSource(
+        public CancelableTaskCompletionSource(
             CancellationToken cancellationToken,
             object state,
             TaskCreationOptions creationOptions)
@@ -85,11 +85,11 @@ namespace AsyncUtilities
             }
 
             _registration = cancellationToken.Register(
-                @this => ((CancellableTaskCompletionSource<TResult>)@this).TrySetCanceled(),
+                @this => ((CancelableTaskCompletionSource<TResult>)@this).TrySetCanceled(),
                 this);
 
             Task.ContinueWithSynchronously(
-                (_, @this) => ((CancellableTaskCompletionSource<TResult>)@this)._registration.Dispose(),
+                (_, @this) => ((CancelableTaskCompletionSource<TResult>)@this)._registration.Dispose(),
                 this);
         }
     }
