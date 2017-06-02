@@ -36,12 +36,9 @@ namespace AsyncUtilities
                 @this => ((CancellableTaskCompletionSource<TResult>)@this).TrySetCanceled(),
                 this);
 
-            Task.ContinueWith(
+            Task.ContinueWithSynchronously(
                 (_, @this) => ((CancellableTaskCompletionSource<TResult>)@this)._registration.Dispose(),
-                this,
-                CancellationToken.None,
-                TaskContinuationOptions.ExecuteSynchronously,
-                TaskScheduler.Default);
+                this);
         }
     }
 }
