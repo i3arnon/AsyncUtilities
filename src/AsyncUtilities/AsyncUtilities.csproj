@@ -4,7 +4,11 @@
     <Authors>Bar Arnon</Authors>
     <Company>Bar Arnon</Company>
     <Copyright>Copyright 2017 Bar Arnon</Copyright>
-    <Description>A collection of somewhat useful utilities for async programming</Description>
+    <Description>
+      A collection of somewhat useful utilities for async programming:
+      - Non-generic ValueTask
+      - CancelableTaskCompletionSource
+    </Description>
     <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>AsyncUtilities</PackageId>
@@ -17,7 +21,7 @@
     <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
     <TargetFramework>netstandard1.0</TargetFramework>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <Version>0.2</Version>
+    <Version>0.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
