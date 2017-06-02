@@ -79,6 +79,11 @@ namespace AsyncUtilities
         {
             CancellationToken = cancellationToken;
 
+            if (!cancellationToken.CanBeCanceled)
+            {
+                return;
+            }
+
             _registration = cancellationToken.Register(
                 @this => ((CancellableTaskCompletionSource<TResult>)@this).TrySetCanceled(),
                 this);
