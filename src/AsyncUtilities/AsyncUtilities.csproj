@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
