@@ -7,6 +7,8 @@
     <Description>
       A collection of somewhat useful utilities for async programming:
       - Non-generic ValueTask
+      - StripedAsyncLock&lt;TKey&gt;
+      - Striped&lt;TKey, TLock&gt;
       - CancelableTaskCompletionSource
     </Description>
     <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
@@ -21,7 +23,7 @@
     <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
     <TargetFramework>netstandard1.0</TargetFramework>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
