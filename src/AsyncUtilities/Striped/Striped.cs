@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AsyncUtilities
 {
     /// <summary>
-    /// <see cref="Striped"/> divides a locking mechanism into granular
+    /// <see cref="Striped"/> divides a locking mechanism into granular 
     /// stripes allowing different operations to hold separate stripes concurrently instead
     /// of holding the entire locking mechanism altogether.
     /// </summary>
@@ -109,8 +109,8 @@ namespace AsyncUtilities
     }
 
     /// <summary>
-    /// <see cref="Striped{TKey,TLock}"/> divides a <typeparamref name="TLock"/> into granular
-    /// stripes allowing different operations to hold separate stripes concurrently instead
+    /// <see cref="Striped{TKey,TLock}"/> divides a <typeparamref name="TLock"/> into granular 
+    /// stripes allowing different operations to hold separate stripes concurrently instead 
     /// of holding the entire <typeparamref name="TLock"/> altogether.
     /// </summary>
     /// <typeparam name="TKey">

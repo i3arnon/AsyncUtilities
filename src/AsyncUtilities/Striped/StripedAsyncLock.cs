@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 namespace AsyncUtilities
 {
     /// <summary>
-    /// <see cref="StripedAsyncLock{TKey}"/> divides an <see cref="AsyncLock"/> into granular
-    /// stripes allowing different operations to lock separate stripes concurrently instead
-    /// of locking the entire <see cref="AsyncLock"/> altogether
+    /// <see cref="StripedAsyncLock{TKey}"/> divides an <see cref="AsyncLock"/> into granular 
+    /// stripes allowing different operations to lock separate stripes concurrently instead 
+    /// of locking the entire <see cref="AsyncLock"/> altogether.
     /// </summary>
     /// <typeparam name="TKey">
     /// The type of the keys the stripes correspond to.
@@ -18,7 +18,7 @@ namespace AsyncUtilities
         private readonly Striped<TKey, AsyncLock> _striped;
 
         /// <summary>
-        /// Initializes a new <see cref="StripedAsyncLock{TKey}"/> instance with the
+        /// Initializes a new <see cref="StripedAsyncLock{TKey}"/> instance with the 
         /// specified number of stripes.
         /// </summary>
         /// <param name="stripes">
@@ -33,7 +33,7 @@ namespace AsyncUtilities
         }
 
         /// <summary>
-        /// Initializes a new <see cref="StripedAsyncLock{TKey}"/> instance with the
+        /// Initializes a new <see cref="StripedAsyncLock{TKey}"/> instance with the 
         /// specified number of stripes that uses the specified <see cref="IEqualityComparer{TKey}"/>.
         /// </summary>
         /// <param name="stripes">
@@ -81,8 +81,8 @@ namespace AsyncUtilities
         /// The <see cref="CancellationToken"/> token to observe.
         /// </param>
         /// <returns>
-        /// A <see cref="ValueTask"/> task that will complete when the <see cref="StripedAsyncLock{TKey}"/>
-        /// has been taken with a <see cref="Releaser"/> result. Disposing of the <see cref="Releaser"/>
+        /// A <see cref="ValueTask"/> task that will complete when the <see cref="StripedAsyncLock{TKey}"/> 
+        /// has been taken with a <see cref="Releaser"/> result.  Disposing of the <see cref="Releaser"/> 
         /// will release the <see cref="StripedAsyncLock{TKey}"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">

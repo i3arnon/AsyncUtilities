@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace AsyncUtilities
 {
     /// <summary>
-    /// Represents a <see cref="TaskCompletionSource{TResult}"/> associated with a <see cref="CancellationToken"/>.
+    /// Represents a <see cref="TaskCompletionSource{TResult}"/> associated with a <see cref="CancellationToken"/>.  
     /// Canceling the <see cref="CancellationToken"/> will cancel the <see cref="CancelableTaskCompletionSource{TResult}"/>.
     /// </summary>
     /// <typeparam name="TResult">

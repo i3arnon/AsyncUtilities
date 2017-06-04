@@ -21,8 +21,8 @@ namespace AsyncUtilities
         /// Asynchronously locks the <see cref="AsyncLock"/>.
         /// </summary>
         /// <returns>
-        /// A <see cref="ValueTask"/> task that will complete when the <see cref="AsyncLock"/>
-        /// has been taken with a <see cref="Releaser"/> result. Disposing of the <see cref="Releaser"/>
+        /// A <see cref="ValueTask"/> task that will complete when the <see cref="AsyncLock"/> 
+        /// has been taken with a <see cref="Releaser"/> result.  Disposing of the <see cref="Releaser"/> 
         /// will release the <see cref="AsyncLock"/>.
         /// </returns>
         public ValueTask<Releaser> LockAsync() => 
@@ -36,8 +36,8 @@ namespace AsyncUtilities
         /// The <see cref="CancellationToken"/> token to observe.
         /// </param>
         /// <returns>
-        /// A <see cref="ValueTask"/> task that will complete when the <see cref="AsyncLock"/>
-        /// has been taken with a <see cref="Releaser"/> result. Disposing of the <see cref="Releaser"/>
+        /// A <see cref="ValueTask"/> task that will complete when the <see cref="AsyncLock"/> 
+        /// has been taken with a <see cref="Releaser"/> result.  Disposing of the <see cref="Releaser"/> 
         /// will release the <see cref="AsyncLock"/>.
         /// </returns>
         public async ValueTask<Releaser> LockAsync(CancellationToken cancellationToken)
