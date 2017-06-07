@@ -15,7 +15,7 @@ Install-Package AsyncUtilities
 
 ## Usage
 
-### <a id="valueTask">`ValueTask`</a>
+### <a id="valueTask">ValueTask</a>
 The non-generic `ValueTask` can be useful in async methods that are invoked very frequently, are likely to complete synchronously but unlike `ValueTask<TResult>` don't return a result. Usually these method will await another async method that does return a `ValueTask<TResult>`, for example:
 
 ```C#
@@ -40,7 +40,7 @@ async ValueTask<T> GetItemAsync<T>(string name)
 }
 ```
 
-### <a id="stripedasynclock">`StripedAsyncLock<TKey>`</a>
+### <a id="stripedasynclock">StripedAsyncLock</a>
 `StripedAsyncLock<TKey>` can be used to reduce contention on an `AsyncLock` by dividing it into more granular stripes. This allows different operations to lock separate stripes concurrently instead of locking the entire lock altogether:
 
 ```C#
