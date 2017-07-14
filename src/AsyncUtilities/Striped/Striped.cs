@@ -135,6 +135,28 @@ namespace AsyncUtilities
         protected readonly int _stripeMask;
 
         /// <summary>
+        /// Gets the striped <typeparamref name="TLock"/> the key corresponds to.
+        /// </summary>
+        /// <param name="key">
+        /// The key corresponding to the striped <typeparamref name="TLock"/>.
+        /// </param>
+        /// <returns>
+        /// The striped <typeparamref name="TLock"/> the key corresponds to.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="key"/> is null.
+        /// </exception>
+        public TLock this[TKey key]
+        {
+            get
+            {
+                if (key == null) throw new ArgumentNullException(nameof(key));
+
+                return GetLock(key);
+            }
+        }
+
+        /// <summary>
         /// Create a new <see cref="Striped{TKey,TLock}"/> instance with the specified 
         /// amount of stripes, that creates new locking mechanism instances using the 
         /// creatorFunction and uses the specified <see cref="IEqualityComparer{TKey}"/>.
