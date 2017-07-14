@@ -9,7 +9,7 @@ namespace AsyncUtilities
     {
         /// <summary>
         /// Tries to complete a <see cref="TaskCompletionSource{TResult}"/> with the status 
-        /// and result of the provided <see cref="completedTask"/>.
+        /// and result of the provided <paramref name="completedTask"/>.
         /// </summary>
         /// <typeparam name="TResult">
         /// The type of the result value associated with this <see cref="TaskCompletionSource{TResult}" />.
