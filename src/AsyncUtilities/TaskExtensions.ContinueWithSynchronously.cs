@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 
 namespace AsyncUtilities
 {
-    /// <summary>Provides a set of static methods for working with specific kinds of <see cref="Task"/> instances.</summary>
-    public static class TaskExtensions
+    public static partial class TaskExtensions
     {
         /// <summary>
         /// Creates a continuation that executes synchronously on the ThreadPool when the target <see cref="Task"/> completes.
