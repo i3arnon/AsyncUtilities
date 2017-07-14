@@ -10,6 +10,10 @@
       - StripedAsyncLock&lt;TKey&gt;
       - Striped&lt;TKey, TLock&gt;
       - CancelableTaskCompletionSource
+      - Extension Methods:
+        - Task.ContinueWithSynchronously
+        - Task.ToCancellationTokenSource
+        - TaskCompletionSource.TryCompleteFromCompletedTask
     </Description>
     <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -23,7 +27,7 @@
     <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
     <TargetFramework>netstandard1.0</TargetFramework>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <Version>0.3.1</Version>
+    <Version>0.4.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
