@@ -27,7 +27,7 @@
     <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
     <TargetFramework>netstandard1.0</TargetFramework>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
