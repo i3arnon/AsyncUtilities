@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace AsyncUtilities
 {
@@ -278,18 +279,21 @@ namespace AsyncUtilities
         /// </returns>
         protected abstract TLock GetLock(int stripe);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private int GetStripe(TKey key)
         {
             var hashCode = _comparer.GetHashCode(key) & int.MaxValue;
             return SmearHashCode(hashCode) & _stripeMask;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private int SmearHashCode(int hashCode)
         {
             hashCode ^= (hashCode >> 20) ^ (hashCode >> 12);
             return hashCode ^ (hashCode >> 7) ^ (hashCode >> 4);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private int GetStripeMask(int stripes)
         {
             stripes |= stripes >> 1;
