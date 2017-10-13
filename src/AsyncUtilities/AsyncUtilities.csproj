@@ -5,15 +5,15 @@
     <Company>Bar Arnon</Company>
     <Copyright>Copyright 2017 Bar Arnon</Copyright>
     <Description>
-      A collection of somewhat useful utilities for async programming:
-      - Non-generic ValueTask
-      - StripedAsyncLock&lt;TKey&gt;
-      - Striped&lt;TKey, TLock&gt;
-      - CancelableTaskCompletionSource
-      - Extension Methods:
-        - Task.ContinueWithSynchronously
-        - Task.ToCancellationTokenSource
-        - TaskCompletionSource.TryCompleteFromCompletedTask
+  A collection of somewhat useful utilities for async programming:
+  - Non-generic ValueTask
+  - StripedAsyncLock&lt;TKey&gt;
+  - Striped&lt;TKey, TLock&gt;
+  - CancelableTaskCompletionSource
+  - Extension Methods:
+    - Task.ContinueWithSynchronously
+    - Task.ToCancellationTokenSource
+    - TaskCompletionSource.TryCompleteFromCompletedTask
     </Description>
     <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
