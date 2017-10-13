@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace AsyncUtilities
 {
@@ -7,6 +8,11 @@ namespace AsyncUtilities
         where TLock : class
     {
         private readonly TLock[] _locks;
+
+        private ReadOnlyCollection<TLock> _locksReadOnlyWrapper;
+
+        public override IEnumerable<TLock> Locks =>
+            _locksReadOnlyWrapper ?? (_locksReadOnlyWrapper = new ReadOnlyCollection<TLock>(_locks));
 
         public SimpleStriped(
             int stripes,

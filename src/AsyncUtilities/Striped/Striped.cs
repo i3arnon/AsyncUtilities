@@ -135,6 +135,16 @@ namespace AsyncUtilities
         protected readonly int _stripeMask;
 
         /// <summary>
+        /// Gets the striped <typeparamref name="TLock"/> instances in the 
+        /// <see cref="Striped{TKey,TLock}"/>.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IEnumerable{TLock}"/> containing the striped <typeparamref name="TLock"/> 
+        /// instances in the <see cref="Striped{TKey,TLock}"/>/>
+        /// </returns>
+        public abstract IEnumerable<TLock> Locks { get; }
+
+        /// <summary>
         /// Gets the striped <typeparamref name="TLock"/> the key corresponds to.
         /// </summary>
         /// <param name="key">
@@ -270,7 +280,7 @@ namespace AsyncUtilities
 
         private int GetStripe(TKey key)
         {
-            var hashCode = _comparer.GetHashCode(key) & 0x7FFF_FFFF;
+            var hashCode = _comparer.GetHashCode(key) & int.MaxValue;
             return SmearHashCode(hashCode) & _stripeMask;
         }
 
