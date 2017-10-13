@@ -122,7 +122,7 @@ namespace AsyncUtilities
     /// </typeparam>
     public abstract class Striped<TKey, TLock> where TLock : class
     {
-        private static readonly TLock[] s_emptyArray = new TLock[0];
+        private static readonly TLock[] _emptyArray = new TLock[0];
 
         private readonly IEqualityComparer<TKey> _comparer;
 
@@ -237,7 +237,7 @@ namespace AsyncUtilities
 
             if (keys.Length == 0)
             {
-                return s_emptyArray;
+                return _emptyArray;
             }
 
             var stripes = new int[keys.Length];

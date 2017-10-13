@@ -33,7 +33,7 @@ namespace AsyncUtilities
     [AsyncMethodBuilder(typeof(AsyncValueTaskMethodBuilder))]
     public struct ValueTask : IEquatable<ValueTask>
     {
-        private static readonly Task s_completedTask = Task.FromResult(false);
+        private static readonly Task _completedTask = Task.FromResult(false);
 
         internal readonly Task _task;
 
@@ -70,7 +70,7 @@ namespace AsyncUtilities
         /// task object to represent the result.
         /// </summary>
         public Task AsTask() => 
-            _task ?? s_completedTask;
+            _task ?? _completedTask;
 
         /// <summary>Gets whether the <see cref="ValueTask"/> represents a completed operation.</summary>
         public bool IsCompleted =>
