@@ -15,8 +15,6 @@
     - Task.ToCancellationTokenSource
     - TaskCompletionSource.TryCompleteFromCompletedTask
     </Description>
-    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>AsyncUtilities</PackageId>
     <PackageLicenseUrl>https://github.com/i3arnon/AsyncUtilities/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/i3arnon/AsyncUtilities</PackageProjectUrl>
@@ -26,8 +24,13 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
     <TargetFramework>netstandard1.0</TargetFramework>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <Version>0.5.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
