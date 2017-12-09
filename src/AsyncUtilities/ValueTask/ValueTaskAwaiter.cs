@@ -4,37 +4,37 @@ using System.Runtime.CompilerServices;
 namespace AsyncUtilities
 {
     /// <summary>Provides an awaiter for a <see cref="ValueTask"/>.</summary>
-    public struct ValueTaskAwaiter : ICriticalNotifyCompletion
+    public readonly struct ValueTaskAwaiter : ICriticalNotifyCompletion
     {
         private readonly ValueTask _value;
+
+        /// <summary>Gets whether the <see cref="ValueTask"/> has completed.</summary>
+        public bool IsCompleted =>
+            _value.IsCompleted;
 
         /// <summary>Initializes the awaiter.</summary>
         /// <param name="value">The value to be awaited.</param>
         internal ValueTaskAwaiter(ValueTask value) =>
             _value = value;
 
-        /// <summary>Gets whether the <see cref="ValueTask"/> has completed.</summary>
-        public bool IsCompleted =>
-            _value.IsCompleted;
-
         /// <summary>Gets the result of the ValueTask.</summary>
-        public void GetResult() => 
+        public void GetResult() =>
             _value._task?.GetAwaiter().GetResult();
 
         /// <summary>Schedules the continuation action for this ValueTask.</summary>
         public void OnCompleted(Action continuation) =>
             _value.
-            AsTask().
-            ConfigureAwait(continueOnCapturedContext: true).
-            GetAwaiter().
-            OnCompleted(continuation);
+                AsTask().
+                ConfigureAwait(continueOnCapturedContext: true).
+                GetAwaiter().
+                OnCompleted(continuation);
 
         /// <summary>Schedules the continuation action for this ValueTask.</summary>
-        public void UnsafeOnCompleted(Action continuation) => 
+        public void UnsafeOnCompleted(Action continuation) =>
             _value.
-            AsTask().
-            ConfigureAwait(continueOnCapturedContext: true).
-            GetAwaiter().
-            UnsafeOnCompleted(continuation);
+                AsTask().
+                ConfigureAwait(continueOnCapturedContext: true).
+                GetAwaiter().
+                UnsafeOnCompleted(continuation);
     }
 }
