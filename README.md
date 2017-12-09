@@ -1,11 +1,21 @@
 # AsyncUtilities
 
-A collection of somewhat useful utilities for async programming:
+A collection of somewhat useful utilities and extension methods for async programming:
+
+### Utilities:
 
 - Non-generic [`ValueTask`](#valuetask)
 - [`StripedAsyncLock<TKey>`](#stripedasynclock)
 - `Striped<TKey, TLock>`
 - `CancelableTaskCompletionSource`
+- `TaskEnumerableAwaiter`
+
+### Extension Methods:
+
+- `Task.ContinueWithSynchronously`
+- `Task.ToCancellationTokenSource`
+- `IEnumerable<Task>.GetAwaiter`
+- `TaskCompletionSource.TryCompleteFromCompletedTask`
 
 ## Install
 
