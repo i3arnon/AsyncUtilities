@@ -3,13 +3,14 @@
   <PropertyGroup>
     <Authors>Bar Arnon</Authors>
     <Company>Bar Arnon</Company>
-    <Copyright>Copyright 2017 Bar Arnon</Copyright>
+    <Copyright>Copyright 2018 Bar Arnon</Copyright>
     <Description>
   A collection of somewhat useful utilities for async programming:
   - Non-generic ValueTask
   - StripedAsyncLock&lt;TKey&gt;
   - Striped&lt;TKey, TLock&gt;
   - CancelableTaskCompletionSource
+  - TaskEnumerableAwaiter
   - Extension Methods:
     - Task.ContinueWithSynchronously
     - Task.ToCancellationTokenSource
@@ -24,7 +25,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
     <TargetFramework>netstandard1.0</TargetFramework>
-    <Version>0.5.0</Version>
+    <Version>0.6.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
