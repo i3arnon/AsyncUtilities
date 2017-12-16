@@ -31,9 +31,9 @@ namespace AsyncUtilities
     /// </para>
     /// </remarks>
     [AsyncMethodBuilder(typeof(AsyncValueTaskMethodBuilder))]
-    public struct ValueTask : IEquatable<ValueTask>
+    public readonly struct ValueTask : IEquatable<ValueTask>
     {
-        private static readonly Task _completedTask = Task.FromResult(false);
+        private static readonly Task _completedTask = Task.FromResult(result: false);
 
         internal readonly Task _task;
 

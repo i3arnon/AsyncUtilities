@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace AsyncUtilities
 {
     /// <summary>Provides an awaitable type that enables configured awaits on a <see cref="ValueTask"/>.</summary>
-    public struct ConfiguredValueTaskAwaitable
+    public readonly struct ConfiguredValueTaskAwaitable
     {
         private readonly ValueTask _value;
         private readonly bool _continueOnCapturedContext;
@@ -25,7 +25,7 @@ namespace AsyncUtilities
             new ConfiguredValueTaskAwaiter(_value, _continueOnCapturedContext);
 
         /// <summary>Provides an awaiter for a <see cref="ConfiguredValueTaskAwaitable"/>.</summary>
-        public struct ConfiguredValueTaskAwaiter : ICriticalNotifyCompletion
+        public readonly struct ConfiguredValueTaskAwaiter : ICriticalNotifyCompletion
         {
             private readonly ValueTask _value;
             private readonly bool _continueOnCapturedContext;
