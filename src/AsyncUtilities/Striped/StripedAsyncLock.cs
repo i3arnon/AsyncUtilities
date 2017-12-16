@@ -100,7 +100,7 @@ namespace AsyncUtilities
         /// </summary>
         public struct Releaser : IDisposable
         {
-            private readonly AsyncLock.Releaser _releaser;
+            private AsyncLock.Releaser _releaser;
 
             internal Releaser(AsyncLock.Releaser releaser) => 
                 _releaser = releaser;
