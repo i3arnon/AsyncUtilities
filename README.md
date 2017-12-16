@@ -31,8 +31,8 @@ The non-generic `ValueTask` can be useful in async methods that are invoked very
 ```C#
 async ValueTask DrawAsync(string name)
 {
-    var pen = await GetAsync<Pen>("pen");
-    var apple = await Getsync<Apple>("apple");
+    var pen = await GetItemAsync<Pen>("pen");
+    var apple = await GetItemAsync<Apple>("apple");
     
     var applePen = pen.JamIn(apple);
     applePen.Draw();
