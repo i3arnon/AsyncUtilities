@@ -64,7 +64,7 @@ namespace AsyncUtilities
             int stripes,
             Func<TLock> creatorFunction)
             where TLock : class =>
-            Create<TKey, TLock>(stripes, creatorFunction, null);
+            Create<TKey, TLock>(stripes, creatorFunction, comparer: null);
 
         /// <summary>
         /// Create a new <see cref="Striped{TKey,TLock}"/> instance with the specified 

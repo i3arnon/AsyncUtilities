@@ -15,7 +15,7 @@ namespace AsyncUtilities
         /// Creates a new <see cref="AsyncLock"/> instance.
         /// </summary>
         public AsyncLock() => 
-            _semaphore = new SemaphoreSlim(1, 1);
+            _semaphore = new SemaphoreSlim(initialCount: 1, maxCount: 1);
 
         /// <summary>
         /// Asynchronously locks the <see cref="AsyncLock"/>.

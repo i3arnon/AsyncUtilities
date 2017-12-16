@@ -28,7 +28,7 @@ namespace AsyncUtilities
         /// <paramref name="stripes"/> is less than 1.
         /// </exception>
         public StripedAsyncLock(int stripes)
-            : this(stripes, null)
+            : this(stripes, comparer: null)
         {
         }
 
