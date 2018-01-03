@@ -1,6 +1,5 @@
-[![NuGet](https://img.shields.io/nuget/v/AsyncUtilities.svg)](https://www.nuget.org/packages/AsyncUtilities)
-
 # AsyncUtilities
+[![NuGet](https://img.shields.io/nuget/v/AsyncUtilities.svg)](https://www.nuget.org/packages/AsyncUtilities)
 
 A collection of somewhat useful utilities and extension methods for async programming:
 
