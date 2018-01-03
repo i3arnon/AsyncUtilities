@@ -1,5 +1,6 @@
 # AsyncUtilities
 [![NuGet](https://img.shields.io/nuget/v/AsyncUtilities.svg)](https://www.nuget.org/packages/AsyncUtilities)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
 A collection of somewhat useful utilities and extension methods for async programming:
 
@@ -17,12 +18,6 @@ A collection of somewhat useful utilities and extension methods for async progra
 - `Task.ToCancellationTokenSource`
 - `IEnumerable<Task>.GetAwaiter`
 - `TaskCompletionSource.TryCompleteFromCompletedTask`
-
-## Install
-
-```powershell
-Install-Package AsyncUtilities
-```
 
 ## Usage
 
@@ -81,6 +76,8 @@ async Task<T> GetOrCreateItem<T>(string name) where T : new()
 }
 ```
 
-## License
+## Install
 
-AsyncUtilities is licensed under the [MIT license](LICENSE).
+```powershell
+Install-Package AsyncUtilities
+```
