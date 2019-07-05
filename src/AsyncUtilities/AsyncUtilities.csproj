@@ -3,56 +3,30 @@
   <PropertyGroup>
     <Authors>Bar Arnon</Authors>
     <Company>Bar Arnon</Company>
-    <Copyright>Copyright 2018 Bar Arnon</Copyright>
-    <Description>
-  A collection of somewhat useful utilities for async programming:
-  
-  - Utilities:
-    - Non-generic ValueTask
-    - StripedAsyncLock&lt;TKey&gt;
-    - Striped&lt;TKey, TLock&gt;
-    - CancelableTaskCompletionSource
-    - TaskEnumerableAwaiter
-  
-  - Extension Methods:
-    - Task.ContinueWithSynchronously
-    - Task.ToCancellationTokenSource
-    - IEnumerable&lt;Task&gt;.GetAwaiter
-    - TaskCompletionSource.TryCompleteFromCompletedTask
-    </Description>
+    <Copyright>Copyright 2019 Bar Arnon</Copyright>
+    <Description>A collection of somewhat useful utilities for async programming</Description>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageId>AsyncUtilities</PackageId>
-    <PackageLicenseUrl>https://github.com/i3arnon/AsyncUtilities/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/i3arnon/AsyncUtilities</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageTags>async</PackageTags>
     <Product>AsyncUtilities</Product>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFrameworks>netstandard1.0;netstandard2.0;net461</TargetFrameworks>
     <Title>AsyncUtilities</Title>
-    <Version>0.6.1</Version>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DisableImplicitFrameworkReferences>True</DisableImplicitFrameworkReferences>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <LangVersion>latest</LangVersion>
     <NoWarn>CA1815</NoWarn>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.0\AsyncUtilities.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
-    <None Remove="*.DotSettings" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Threading" Version="4.3.0" />
-    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.2" />
   </ItemGroup>
 
 </Project>
