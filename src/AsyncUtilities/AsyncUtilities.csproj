@@ -1,4 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <NoWarn>CA1815</NoWarn>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
 
   <PropertyGroup>
     <Authors>Bar Arnon</Authors>
@@ -6,6 +12,7 @@
     <Copyright>Copyright 2019 Bar Arnon</Copyright>
     <Description>A collection of somewhat useful utilities for async programming</Description>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
     <PackageId>AsyncUtilities</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/i3arnon/AsyncUtilities</PackageProjectUrl>
@@ -14,15 +21,10 @@
     <Product>AsyncUtilities</Product>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFrameworks>netstandard1.0;netstandard2.0;net461</TargetFrameworks>
     <Title>AsyncUtilities</Title>
-    <Version>1.0.0</Version>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <NoWarn>CA1815</NoWarn>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
