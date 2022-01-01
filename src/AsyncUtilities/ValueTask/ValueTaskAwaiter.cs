@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
+#if NETSTANDARD2_0
+
 namespace AsyncUtilities
 {
     /// <summary>Provides an awaiter for a <see cref="ValueTask"/>.</summary>
@@ -38,3 +40,5 @@ namespace AsyncUtilities
                 UnsafeOnCompleted(continuation);
     }
 }
+
+#endif

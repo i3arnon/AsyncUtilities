@@ -8,7 +8,6 @@ A collection of somewhat useful utilities and extension methods for async progra
 
 [Utilities:](#utilities)
 
-1. [ValueTask](#value-task)
 1. [AsyncLock](#async-lock)
 1. [Striped Lock](#striped-lock)
 1. [TaskEnumerableAwaiter](#task-enumerable-awaiter)
@@ -19,42 +18,6 @@ A collection of somewhat useful utilities and extension methods for async progra
 1. [ContinueWithSynchronously](#continue-with-synchronously)
 1. [TryCompleteFromCompletedTask](#complete-from-completed-task)
 1. [ToCancellationTokenSource](#to-cancellation-token-source)
-
----
-
-# <a name="utilities"/> Utilities:
-
-## <a name="value-task"/> `ValueTask` 
-
-When writing async methods that usually complete synchronously `ValueTask<TResult>` can be used to avoid allocating a `Task<TResult>` instance in the synchronous case (I've written about it [here](http://blog.i3arnon.com/2015/11/30/valuetask/)). There isn't a non-generic version of `ValueTask<TResult>` in the BCL. An explanation can be found in the [comments for `ValueTask<TResult>` in the corefx repository](https://github.com/dotnet/corefx/blob/master/src/System.Threading.Tasks.Extensions/src/System/Threading/Tasks/ValueTask.cs#L46):
-
-> There is no non-generic version of `ValueTask<TResult>` as the `Task.CompletedTask` property may be used to hand back a successfully completed singleton in the case where a `Task`-returning method completes synchronously and successfully.
-
-However, when you have a tree of async methods without results and they in turn only call methods that return `ValueTask<TResult>` you need to either allocate `Task` instances, even if the operations complete synchronously, or you need to remove the `async` keyword and custom-implement the async mechanism with `Task.ContinueWith`.
-
-Because I dislike both of these options I made a non-generic `ValueTask`. Here's how it can be used:
-
-```csharp
-async ValueTask DrawAsync(string name)
-{
-    var pen = await GetItemAsync<Pen>("pen");
-    var apple = await GetItemAsync<Apple>("apple");
-
-    var applePen = pen.JamIn(apple);
-    applePen.Draw();
-}
-
-async ValueTask<T> GetItemAsync<T>(string name)
-{
-    var item = GetFromCache<T>(name);
-    if (item != null)
-    {
-        return item;
-    }
-
-    return await GetFromDbAsync<T>(name);
-}
-```
 
 ---
 

@@ -2,6 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Security;
 
+#if NETSTANDARD2_0
+
 namespace AsyncUtilities
 {
     /// <summary>Represents a builder for asynchronous methods that returns a <see cref="ValueTask"/>.</summary>
@@ -92,3 +94,5 @@ namespace AsyncUtilities
         }
     }
 }
+
+#endif

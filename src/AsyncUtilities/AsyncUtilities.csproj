@@ -1,34 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <NoWarn>CA1815</NoWarn>
-    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <Authors>Bar Arnon</Authors>
-    <Company>Bar Arnon</Company>
-    <Copyright>Copyright 2019 Bar Arnon</Copyright>
+    <ContinuousIntegrationBuild>True</ContinuousIntegrationBuild>
     <Description>A collection of somewhat useful utilities for async programming</Description>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <Deterministic>true</Deterministic>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSource>true</IncludeSource>
     <IncludeSymbols>true</IncludeSymbols>
     <PackageId>AsyncUtilities</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/i3arnon/AsyncUtilities</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>Update target frameworks, use latest C# features, add nullable annotations, add mising ConfigureAwaits, hide ValueTask.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageTags>async</PackageTags>
-    <Product>AsyncUtilities</Product>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/i3arnon/AsyncUtilities</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <TargetFrameworks>netstandard1.0;netstandard2.0;net461</TargetFrameworks>
-    <Title>AsyncUtilities</Title>
-    <Version>1.0.1</Version>
+    <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

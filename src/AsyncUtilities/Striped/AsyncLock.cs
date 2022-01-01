@@ -42,7 +42,7 @@ namespace AsyncUtilities
         /// </returns>
         public async ValueTask<Releaser> LockAsync(CancellationToken cancellationToken)
         {
-            await _semaphore.WaitAsync(cancellationToken);
+            await _semaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
             return new Releaser(this);
         }
 

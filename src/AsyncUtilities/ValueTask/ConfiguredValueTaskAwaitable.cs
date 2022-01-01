@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
+#if NETSTANDARD2_0
+
 namespace AsyncUtilities
 {
     /// <summary>Provides an awaitable type that enables configured awaits on a <see cref="ValueTask"/>.</summary>
@@ -65,3 +67,5 @@ namespace AsyncUtilities
         }
     }
 }
+
+#endif

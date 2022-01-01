@@ -13,7 +13,7 @@ namespace AsyncUtilities
     /// <typeparam name="TKey">
     /// The type of the keys the stripes correspond to.
     /// </typeparam>
-    public class StripedAsyncLock<TKey>
+    public class StripedAsyncLock<TKey> where TKey : notnull
     {
         private readonly Striped<TKey, AsyncLock> _striped;
 
@@ -46,7 +46,7 @@ namespace AsyncUtilities
         /// <exception cref="ArgumentOutOfRangeException">
         /// <paramref name="stripes"/> is less than 1.
         /// </exception>
-        public StripedAsyncLock(int stripes, IEqualityComparer<TKey> comparer)
+        public StripedAsyncLock(int stripes, IEqualityComparer<TKey>? comparer)
         {
             if (stripes <= 0) throw new ArgumentOutOfRangeException(nameof(stripes));
 
@@ -90,9 +90,9 @@ namespace AsyncUtilities
         /// </exception>
         public async ValueTask<Releaser> LockAsync(TKey key, CancellationToken cancellationToken)
         {
-            if (key == null) throw new ArgumentNullException(nameof(key));
+            if (key is null) throw new ArgumentNullException(nameof(key));
 
-            return new Releaser(await _striped.GetLock(key).LockAsync(cancellationToken));
+            return new Releaser(await _striped.GetLock(key).LockAsync(cancellationToken).ConfigureAwait(false));
         }
 
         /// <summary>

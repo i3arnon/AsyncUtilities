@@ -20,7 +20,7 @@ namespace AsyncUtilities
         /// </param>
         internal TaskEnumerableAwaiter(IEnumerable<Task> tasks, bool continueOnCapturedContext = true)
         {
-            if (tasks == null) throw new ArgumentNullException(nameof(tasks));
+            if (tasks is null) throw new ArgumentNullException(nameof(tasks));
 
             _awaiter =
                 Task.WhenAll(tasks).
@@ -57,7 +57,7 @@ namespace AsyncUtilities
         /// </param>
         internal TaskEnumerableAwaiter(IEnumerable<Task<TResult>> tasks, bool continueOnCapturedContext = true)
         {
-            if (tasks == null) throw new ArgumentNullException(nameof(tasks));
+            if (tasks is null) throw new ArgumentNullException(nameof(tasks));
 
             _awaiter =
                 Task.WhenAll(tasks).

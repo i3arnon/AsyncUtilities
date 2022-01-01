@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using static System.Threading.Tasks.TaskCreationOptions;
 
 namespace AsyncUtilities
 {
@@ -26,7 +27,7 @@ namespace AsyncUtilities
         /// The <see cref="CancellationToken"/> to associate with the <see cref="CancelableTaskCompletionSource{TResult}"/>.
         /// </param>
         public CancelableTaskCompletionSource(CancellationToken cancellationToken)
-            : this(cancellationToken, state: null, TaskCreationOptions.None)
+            : this(cancellationToken, state: null, None)
         {
         }
 
@@ -54,8 +55,8 @@ namespace AsyncUtilities
         /// <param name="state">
         /// The state to use as the underlying <see cref="Task{TResult}"/>'s AsyncState.
         /// </param>
-        public CancelableTaskCompletionSource(CancellationToken cancellationToken, object state)
-            : this(cancellationToken, state, TaskCreationOptions.None)
+        public CancelableTaskCompletionSource(CancellationToken cancellationToken, object? state)
+            : this(cancellationToken, state, None)
         {
         }
 
@@ -73,7 +74,7 @@ namespace AsyncUtilities
         /// </param>
         public CancelableTaskCompletionSource(
             CancellationToken cancellationToken,
-            object state,
+            object? state,
             TaskCreationOptions creationOptions)
             : base(state, creationOptions)
         {
@@ -85,11 +86,11 @@ namespace AsyncUtilities
             }
 
             _registration = cancellationToken.Register(
-                @this => ((CancelableTaskCompletionSource<TResult>)@this).TrySetCanceled(),
+                state => ((CancelableTaskCompletionSource<TResult>)state!).TrySetCanceled(),
                 this);
 
             Task.ContinueWithSynchronously(
-                (_, @this) => ((CancelableTaskCompletionSource<TResult>)@this)._registration.Dispose(),
+                (_, state) => ((CancelableTaskCompletionSource<TResult>)state!)._registration.Dispose(),
                 this);
         }
     }

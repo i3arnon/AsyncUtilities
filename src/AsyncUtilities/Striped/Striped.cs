@@ -31,6 +31,7 @@ namespace AsyncUtilities
         /// <paramref name="stripes"/> is less than 1.
         /// </exception>
         public static Striped<TKey, TLock> Create<TKey, TLock>(int stripes)
+            where TKey : notnull
             where TLock : class, new() =>
             Create<TKey, TLock>(stripes, () => new TLock());
 
@@ -63,6 +64,7 @@ namespace AsyncUtilities
         public static Striped<TKey, TLock> Create<TKey, TLock>(
             int stripes,
             Func<TLock> creatorFunction)
+            where TKey : notnull
             where TLock : class =>
             Create<TKey, TLock>(stripes, creatorFunction, comparer: null);
 
@@ -99,11 +101,12 @@ namespace AsyncUtilities
         public static Striped<TKey, TLock> Create<TKey, TLock>(
             int stripes,
             Func<TLock> creatorFunction,
-            IEqualityComparer<TKey> comparer)
-            where TLock : class
+            IEqualityComparer<TKey>? comparer)
+            where TKey : notnull
+            where TLock : class 
         {
             if (stripes <= 0) throw new ArgumentOutOfRangeException(nameof(stripes));
-            if (creatorFunction == null) throw new ArgumentNullException(nameof(creatorFunction));
+            if (creatorFunction is null) throw new ArgumentNullException(nameof(creatorFunction));
 
             return new SimpleStriped<TKey, TLock>(stripes, creatorFunction, comparer);
         }
@@ -120,16 +123,17 @@ namespace AsyncUtilities
     /// <typeparam name="TLock">
     /// The type of the locking mechanism to stripe.
     /// </typeparam>
-    public abstract class Striped<TKey, TLock> where TLock : class
+    public abstract class Striped<TKey, TLock> 
+        where TKey : notnull 
+        where TLock : class
     {
-        private static readonly TLock[] _emptyArray = new TLock[0];
-
         private readonly IEqualityComparer<TKey> _comparer;
 
         /// <summary>
         /// The function to create new <typeparamref name="TLock"/> instances.
         /// </summary>
         protected readonly Func<TLock> _creatorFunction;
+
         /// <summary>
         /// The mask used to generate a stripe's index.
         /// </summary>
@@ -161,7 +165,7 @@ namespace AsyncUtilities
         {
             get
             {
-                if (key == null) throw new ArgumentNullException(nameof(key));
+                if (key is null) throw new ArgumentNullException(nameof(key));
 
                 return GetLock(key);
             }
@@ -191,7 +195,7 @@ namespace AsyncUtilities
         protected Striped(
             int stripes,
             Func<TLock> creatorFunction,
-            IEqualityComparer<TKey> comparer)
+            IEqualityComparer<TKey>? comparer)
         {
             if (stripes <= 0) throw new ArgumentOutOfRangeException(nameof(stripes));
 
@@ -214,7 +218,7 @@ namespace AsyncUtilities
         /// </exception>
         public TLock GetLock(TKey key)
         {
-            if (key == null) throw new ArgumentNullException(nameof(key));
+            if (key is null) throw new ArgumentNullException(nameof(key));
 
             return GetLock(GetStripe(key));
         }
@@ -233,11 +237,11 @@ namespace AsyncUtilities
         /// </exception>
         public IEnumerable<TLock> GetLocks(params TKey[] keys)
         {
-            if (keys == null) throw new ArgumentNullException(nameof(keys));
+            if (keys is null) throw new ArgumentNullException(nameof(keys));
 
             if (keys.Length == 0)
             {
-                return _emptyArray;
+                return Array.Empty<TLock>();
             }
 
             var stripes = new int[keys.Length];

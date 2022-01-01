@@ -10,7 +10,7 @@ namespace AsyncUtilities
         /// <param name="tasks">The tasks to create an awaiter for.</param>
         public static TaskEnumerableAwaiter GetAwaiter(this IEnumerable<Task> tasks)
         {
-            if (tasks == null) throw new ArgumentNullException(nameof(tasks));
+            if (tasks is null) throw new ArgumentNullException(nameof(tasks));
 
             return new TaskEnumerableAwaiter(tasks);
         }
@@ -24,7 +24,7 @@ namespace AsyncUtilities
             this IEnumerable<Task> tasks,
             bool continueOnCapturedContext)
         {
-            if (tasks == null) throw new ArgumentNullException(nameof(tasks));
+            if (tasks is null) throw new ArgumentNullException(nameof(tasks));
 
             return new ConfiguredTaskEnumerableAwaitable(tasks, continueOnCapturedContext);
         }
@@ -33,7 +33,7 @@ namespace AsyncUtilities
         /// <param name="tasks">The tasks to create an awaiter for.</param>
         public static TaskEnumerableAwaiter<TResult> GetAwaiter<TResult>(this IEnumerable<Task<TResult>> tasks)
         {
-            if (tasks == null) throw new ArgumentNullException(nameof(tasks));
+            if (tasks is null) throw new ArgumentNullException(nameof(tasks));
 
             return new TaskEnumerableAwaiter<TResult>(tasks);
         }
@@ -47,7 +47,7 @@ namespace AsyncUtilities
             this IEnumerable<Task<TResult>> tasks,
             bool continueOnCapturedContext)
         {
-            if (tasks == null) throw new ArgumentNullException(nameof(tasks));
+            if (tasks is null) throw new ArgumentNullException(nameof(tasks));
 
             return new ConfiguredTaskEnumerableAwaitable<TResult>(tasks, continueOnCapturedContext);
         }

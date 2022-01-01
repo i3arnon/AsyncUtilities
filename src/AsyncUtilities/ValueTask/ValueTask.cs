@@ -2,6 +2,8 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
+#if NETSTANDARD2_0
+
 namespace AsyncUtilities
 {
     /// <summary>
@@ -74,19 +76,19 @@ namespace AsyncUtilities
 
         /// <summary>Gets whether the <see cref="ValueTask"/> represents a completed operation.</summary>
         public bool IsCompleted =>
-            _task == null || _task.IsCompleted;
+            _task is null || _task.IsCompleted;
 
         /// <summary>Gets whether the <see cref="ValueTask"/> represents a successfully completed operation.</summary>
         public bool IsCompletedSuccessfully =>
-            _task == null || _task.Status == TaskStatus.RanToCompletion;
+            _task is null || _task.Status == TaskStatus.RanToCompletion;
 
         /// <summary>Gets whether the <see cref="ValueTask"/> represents a failed operation.</summary>
         public bool IsFaulted =>
-            _task != null && _task.IsFaulted;
+            _task is { IsFaulted: true };
 
         /// <summary>Gets whether the <see cref="ValueTask"/> represents a canceled operation.</summary>
         public bool IsCanceled =>
-            _task != null && _task.IsCanceled;
+            _task is { IsCanceled: true };
 
         /// <summary>Gets an awaiter for this value.</summary>
         public ValueTaskAwaiter GetAwaiter() => 
@@ -100,3 +102,5 @@ namespace AsyncUtilities
             new ConfiguredValueTaskAwaitable(this, continueOnCapturedContext);
     }
 }
+
+#endif

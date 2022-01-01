@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using static System.Threading.Tasks.TaskStatus;
 
 namespace AsyncUtilities
 {
@@ -28,20 +29,16 @@ namespace AsyncUtilities
             this TaskCompletionSource<TResult> taskCompletionSource,
             Task<TResult> completedTask)
         {
-            if (taskCompletionSource == null) throw new ArgumentNullException(nameof(taskCompletionSource));
-            if (completedTask == null) throw new ArgumentNullException(nameof(completedTask));
+            if (taskCompletionSource is null) throw new ArgumentNullException(nameof(taskCompletionSource));
+            if (completedTask is null) throw new ArgumentNullException(nameof(completedTask));
 
-            switch (completedTask.Status)
+            return completedTask.Status switch
             {
-                case TaskStatus.Faulted:
-                    return taskCompletionSource.TrySetException(completedTask.Exception.InnerExceptions);
-                case TaskStatus.Canceled:
-                    return taskCompletionSource.TrySetCanceled();
-                case TaskStatus.RanToCompletion:
-                    return taskCompletionSource.TrySetResult(completedTask.Result);
-                default:
-                    throw new ArgumentException("Argument must be a completed task", nameof(completedTask));
-            }
+                Faulted => taskCompletionSource.TrySetException(completedTask.Exception!.InnerExceptions),
+                Canceled => taskCompletionSource.TrySetCanceled(),
+                RanToCompletion => taskCompletionSource.TrySetResult(completedTask.Result),
+                _ => throw new ArgumentException("Argument must be a completed task", nameof(completedTask))
+            };
         }
     }
 }

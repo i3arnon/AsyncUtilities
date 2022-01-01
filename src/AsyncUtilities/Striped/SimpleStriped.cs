@@ -5,19 +5,20 @@ using System.Collections.ObjectModel;
 namespace AsyncUtilities
 {
     internal class SimpleStriped<TKey, TLock> : Striped<TKey, TLock>
-        where TLock : class
+        where TKey : notnull
+        where TLock : class 
     {
         private readonly TLock[] _locks;
 
-        private ReadOnlyCollection<TLock> _locksReadOnlyWrapper;
+        private ReadOnlyCollection<TLock>? _locksReadOnlyWrapper;
 
         public override IEnumerable<TLock> Locks =>
-            _locksReadOnlyWrapper ?? (_locksReadOnlyWrapper = new ReadOnlyCollection<TLock>(_locks));
+            _locksReadOnlyWrapper ??= new ReadOnlyCollection<TLock>(_locks);
 
         public SimpleStriped(
             int stripes,
             Func<TLock> creatorFunction,
-            IEqualityComparer<TKey> comparer)
+            IEqualityComparer<TKey>? comparer)
             : base(stripes, creatorFunction, comparer)
         {
             _locks = new TLock[_stripeMask + 1];

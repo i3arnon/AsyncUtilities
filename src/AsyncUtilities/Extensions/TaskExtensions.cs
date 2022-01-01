@@ -22,11 +22,11 @@ namespace AsyncUtilities
         /// </exception>
         public static CancellationTokenSource ToCancellationTokenSource(this Task task)
         {
-            if (task == null) throw new ArgumentNullException(nameof(task));
+            if (task is null) throw new ArgumentNullException(nameof(task));
             
             var cancellationTokenSource = new CancellationTokenSource();
             task.ContinueWithSynchronously(
-                (_, @this) => ((CancellationTokenSource)@this).Cancel(),
+                (_, state) => ((CancellationTokenSource)state!).Cancel(),
                 cancellationTokenSource);
             return cancellationTokenSource;
         }
